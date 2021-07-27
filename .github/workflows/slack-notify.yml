@@ -18,7 +18,7 @@ jobs:
     name: Post Workflow Status To Slack
     needs:
       - job-1
-      - job-2
+#       - job-2
     runs-on: ubuntu-latest
     steps:
       - name: Slack Workflow Notification
@@ -26,9 +26,9 @@ jobs:
         with:
           # Required Input
           repo_token: ${{secrets.GITHUB_TOKEN}}
-          slack_webhook_url: https://hooks.slack.com/services/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
+          slack_webhook_url: https://hooks.slack.com/services/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
           # Optional Input
-          channel: '#anthony-test-channel'
+          channel: '#testing'
           name: 'Anthony Workflow Bot'
           icon_emoji: ':poop:'
           icon_url: 'https://avatars0.githubusercontent.com/u/1701160?s=96&v=4'
