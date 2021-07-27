@@ -8,6 +8,10 @@ jobs:
     - uses: actions/checkout@v2
     - name: Slack Notification
       uses: voxmedia/github-action-slack-notify-build@v1
+      with:
+        channel: #testing
+        status: STARTED
+        color: good
       env:
         SLACK_CHANNEL: A029U68JSQG
         SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
