@@ -1,7 +1,7 @@
 name: World Greeter
 on:
   push:
-    branches: [ main, master, staging ]
+    branches: [main, master, staging ]
 jobs:
   job-1:
     runs-on: ubuntu-latest
@@ -21,10 +21,14 @@ jobs:
 #       - job-2
     runs-on: ubuntu-latest
     steps:
-      - uses: voxmedia/github-action-slack-notify-build@v1
+      - name: Slack Workflow Notification
+        uses: Gamesight/slack-workflow-status@master
         with:
-            channel: '#testing'
-            status: STARTED
-            color: good
-        env:
-            SLACK_BOT_TOKEN: xoxb-2295795949815-2310727261731-NZtRIHCgHZC3LF6hcElJmIKm
+          # Required Input
+          repo_token: ${{secrets.GITHUB_TOKEN}}
+          slack_webhook_url: ${{secrets.SLACK_WEBHOOK_URL}}
+          # Optional Input
+          channel: '#testimg'
+          name: 'Anthony Workflow Bot'
+          icon_emoji: ':poop:'
+          icon_url: 'https://avatars0.githubusercontent.com/u/1701160?s=96&v=4'
