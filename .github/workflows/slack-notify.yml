@@ -7,7 +7,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Slack Notification
-      uses: alert-bot/action-slack-notify@v2
+      uses: voxmedia/github-action-slack-notify-build@v1
       env:
         SLACK_CHANNEL: testing
         SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
