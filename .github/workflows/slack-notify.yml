@@ -26,7 +26,7 @@ jobs:
         with:
           # Required Input
           repo_token: ${{secrets.GITHUB_TOKEN}}
-          slack_webhook_url: https://hooks.slack.com/services/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
+          slack_webhook_url: ${{secrets.SLACK_WEBHOOK_URL}}
           # Optional Input
           channel: '#general'
           name: 'alert-bot'
