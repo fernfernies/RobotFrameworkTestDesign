@@ -3,11 +3,22 @@ on:
   push:
     branches: [main, master, staging ]
 jobs:
-  job-1:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Say Hello
-        run: echo "Hello"
+  test:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
+        - name: Execute tests
+          uses: joonvena/robotframework-docker-action@v0.1
+          env:
+            BROWSER: chrome
+            ROBOT_TESTS_DIR: ${{ github.workspace }}
+#             ROBOT_REPORTS_DIR: ${{ github.workspace }}/reports
+        - name: Upload test results
+          uses: actions/upload-artifact@v1
+          if: always()
+          with:
+            name: reports
+            path: ${{ github.workspace }}
   job-2:
     runs-on: ubuntu-latest
     steps:
@@ -17,7 +28,7 @@ jobs:
     if: always()
     name: Post Workflow Status To Slack
     needs:
-      - job-1
+      - test
 #       - job-2
     runs-on: ubuntu-latest
     steps:
