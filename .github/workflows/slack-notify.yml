@@ -26,9 +26,9 @@ jobs:
         with:
           # Required Input
           repo_token: ${{secrets.GITHUB_TOKEN}}
-          slack_webhook_url: https://hooks.slack.com/services/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
+          slack_webhook_url: https://hooks.slack.com/services/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
           # Optional Input
-          channel: '#testing'
+          channel: '#general'
           name: 'alert-bot'
           icon_emoji: ':poop:'
           icon_url: 'https://avatars0.githubusercontent.com/u/1701160?s=96&v=4'
