@@ -13,7 +13,7 @@ jobs:
         status: STARTED
         color: good
       env:
-        SLACK_BOT_TOKEN: xapp-1-A029U68JSQG-2317634880244-7ac9bc30c094900fd84fb07b5e43c47f462ada523c96f2a7263390ad99030cd3
+        SLACK_BOT_TOKEN: xo2cJTCW0rVwZTAKbdJdoqBH
         SLACK_CHANNEL: A029U68JSQG
         SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
         SLACK_ICON: https://github.com/rtCamp.png?size=48
