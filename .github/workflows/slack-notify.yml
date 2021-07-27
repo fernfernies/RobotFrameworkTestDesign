@@ -9,7 +9,7 @@ jobs:
     - name: Slack Notification
       uses: voxmedia/github-action-slack-notify-build@v1
       with:
-        channel: #testing
+        channel: A029U68JSQG
         status: STARTED
         color: good
       env:
