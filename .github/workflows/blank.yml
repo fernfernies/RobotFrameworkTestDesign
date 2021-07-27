@@ -31,3 +31,11 @@ jobs:
           with:
             name: reports
             path: ${{ github.workspace }}
+            
+        - name: Create test report
+          uses: ./
+          if: success() || failure()
+          with:
+            name: JEST Tests
+            path: ${{ github.workspace }}/*.xml
+            reporter: jest-junit
