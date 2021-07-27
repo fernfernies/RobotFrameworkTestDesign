@@ -33,7 +33,7 @@ jobs:
             path: ${{ github.workspace }}
             
         - name: Create test report
-          uses: ./
+          uses: actions/upload-artifact@v1
           if: success() || failure()
           with:
             name: JEST Tests
