@@ -9,7 +9,7 @@ jobs:
     - name: Slack Notification
       uses: voxmedia/github-action-slack-notify-build@v1
       env:
-        SLACK_CHANNEL: testing
+        SLACK_CHANNEL: A029U68JSQG
         SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
         SLACK_ICON: https://github.com/rtCamp.png?size=48
         SLACK_MESSAGE: 'Post Content :rocket:'
