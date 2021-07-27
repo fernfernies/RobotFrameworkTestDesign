@@ -26,7 +26,7 @@ jobs:
         with:
           # Required Input
           repo_token: ${{secrets.GITHUB_TOKEN}}
-          slack_webhook_url: https://hooks.slack.com/services/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
+          slack_webhook_url: https://hooks.slack.com/services/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
           # Optional Input
           channel: '#testing'
           name: 'Anthony Workflow Bot'
