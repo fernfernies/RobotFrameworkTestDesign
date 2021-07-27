@@ -19,6 +19,6 @@ jobs:
         SLACK_ICON: https://github.com/rtCamp.png?size=48
         SLACK_MESSAGE: 'Post Content :rocket:'
         SLACK_TITLE: Post Title
-        SLACK_USERNAME: achariyaseanta
+#         SLACK_USERNAME: achariyaseanta
 #         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         SLACK_WEBHOOK: https://hooks.slack.com/services/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
