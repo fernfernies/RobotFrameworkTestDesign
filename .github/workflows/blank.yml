@@ -32,10 +32,4 @@ jobs:
             name: reports
             path: ${{ github.workspace }}
             
-        - name: Create test report
-          uses: actions/upload-artifact@v1
-          if: success() || failure()
-          with:
-            name: JEST Tests
-            path: ${{ github.workspace }}/*.xml
-            reporter: jest-junit
+ 
