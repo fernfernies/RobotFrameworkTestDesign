@@ -61,7 +61,7 @@ jobs:
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1
         with:
-          files: ${{ github.workspace }}/reports/*.xml
+          files: ${{ github.workspace }}/reports/output.xml
 
 #   slack-notfi01:
 #     name: Slack Notification 01
