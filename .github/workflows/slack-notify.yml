@@ -18,7 +18,7 @@ jobs:
           if: always()
           with:
             name: reports
-            path: ${{ github.workspace }}
+            path: ${{ github.workspace }}/*.xml
   job-2:
     runs-on: ubuntu-latest
     steps:
