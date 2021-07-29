@@ -25,11 +25,27 @@ jobs:
             BROWSER: chrome
             ROBOT_TESTS_DIR: ${{ github.workspace }}
 #             ROBOT_REPORTS_DIR: ${{ github.workspace }}/reports
+
         - name: Upload test results
-          uses: actions/upload-artifact@v1
-          if: always()
+          if: success() || failure()
+          uses: actions/upload-artifact@v2
           with:
-            name: reports
-            path: ${{ github.workspace }}
+            name: test-results
+            path: __tests__/__results__/*.xml
+
+        - name: Create test report 01
+          uses: ./
+          if: success() || failure()
+          with:
+            name: JEST Tests
+            path: __tests__/__results__/*.xml
+            reporter: jest-junit
+
+#         - name: Upload test results
+#           uses: actions/upload-artifact@v1
+#           if: always()
+#           with:
+#             name: reports
+#             path: ${{ github.workspace }}
             
  
