@@ -1,4 +1,4 @@
-name: World Greeter
+name: Robotframework Job
 on:
   push:
     branches: [main, master, staging ]
