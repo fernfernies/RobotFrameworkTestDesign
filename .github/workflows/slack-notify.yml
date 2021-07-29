@@ -40,7 +40,7 @@ jobs:
           slack_webhook_url: ${{secrets.SLACK_WEBHOOK_URL}}
           # Optional Input
           channel: '#testing'
-          name: 'Anthony Workflow Bot'
+          name: 'Robotframework Bot'
           icon_emoji: ':octocat:'
           icon_url: 'https://avatars0.githubusercontent.com/u/1701160?s=96&v=4'
     
@@ -62,32 +62,3 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v1
         with:
           files: ${{ github.workspace }}/reports/output.xml
-
-#   slack-notfi01:
-#     name: Slack Notification 01
-#     runs-on: ubuntu-latest
-#     steps:
-#         - uses: actions/checkout@v2
-#         - name: Slack Notification
-#           uses: rtCamp/action-slack-notify@v2
-#           env:
-#             SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK_URL}}
-#         - name: Slack Notification 02
-#           uses: rtCamp/action-slack-notify@v2
-#           env:
-#             SLACK_CHANNEL: '#testing'
-#             SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
-#             SLACK_ICON: https://github.com/rtCamp.png?size=48
-#             SLACK_MESSAGE: 'Post Content :rocket:'
-#             SLACK_TITLE: Post Title
-#             SLACK_USERNAME: rtCamp
-#             SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK_URL}}
-#       - name: slack-workflow-result
-#         uses: SynergiTech/slack-workflow-result@v1
-#         with:
-#           status: ${{ job.status }}
-#           author_name: Integration Test # default: 8398a7@action-slack
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # optional
-#           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
-#         if: always() # Pick up events even if the job fails or is canceled.
