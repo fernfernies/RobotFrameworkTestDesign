@@ -31,14 +31,14 @@ jobs:
           uses: actions/upload-artifact@v2
           with:
             name: test-results
-            path: __tests__/__results__/*.xml
+            path: ${{ github.workspace }}/*.xml
 
         - name: Create test report 01
           uses: ./
           if: success() || failure()
           with:
             name: JEST Tests
-            path: __tests__/__results__/*.xml
+            path: ${{ github.workspace }}/*.xml
             reporter: jest-junit
 
 #         - name: Upload test results
