@@ -41,27 +41,27 @@ jobs:
           # Optional Input
           channel: '#testing'
           name: 'Anthony Workflow Bot'
-          icon_emoji: ':poop:'
+          icon_emoji: ':octocat:'
           icon_url: 'https://avatars0.githubusercontent.com/u/1701160?s=96&v=4'
-  slack-notfi01:
-    name: Slack Notification 01
-    runs-on: ubuntu-latest
-    steps:
-        - uses: actions/checkout@v2
-        - name: Slack Notification
-          uses: rtCamp/action-slack-notify@v2
-          env:
-            SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK_URL}}
-        - name: Slack Notification 02
-          uses: rtCamp/action-slack-notify@v2
-          env:
-            SLACK_CHANNEL: '#testing'
-            SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
-            SLACK_ICON: https://github.com/rtCamp.png?size=48
-            SLACK_MESSAGE: 'Post Content :rocket:'
-            SLACK_TITLE: Post Title
-            SLACK_USERNAME: rtCamp
-            SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK_URL}}
+#   slack-notfi01:
+#     name: Slack Notification 01
+#     runs-on: ubuntu-latest
+#     steps:
+#         - uses: actions/checkout@v2
+#         - name: Slack Notification
+#           uses: rtCamp/action-slack-notify@v2
+#           env:
+#             SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK_URL}}
+#         - name: Slack Notification 02
+#           uses: rtCamp/action-slack-notify@v2
+#           env:
+#             SLACK_CHANNEL: '#testing'
+#             SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+#             SLACK_ICON: https://github.com/rtCamp.png?size=48
+#             SLACK_MESSAGE: 'Post Content :rocket:'
+#             SLACK_TITLE: Post Title
+#             SLACK_USERNAME: rtCamp
+#             SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK_URL}}
 #       - name: slack-workflow-result
 #         uses: SynergiTech/slack-workflow-result@v1
 #         with:
