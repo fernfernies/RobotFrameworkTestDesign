@@ -43,16 +43,16 @@ jobs:
           name: 'Anthony Workflow Bot'
           icon_emoji: ':poop:'
           icon_url: 'https://avatars0.githubusercontent.com/u/1701160?s=96&v=4'
- 
-      - name: Slack Notification 01
-        runs-on: ubuntu-latest
-        steps:
+  slack-notfi01:
+    name: Slack Notification 01
+    runs-on: ubuntu-latest
+    steps:
         - uses: actions/checkout@v2
         - name: Slack Notification
           uses: rtCamp/action-slack-notify@v2
           env:
             SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK_URL}}
-        - name: Slack Notification 01
+        - name: Slack Notification 02
           uses: rtCamp/action-slack-notify@v2
           env:
             SLACK_CHANNEL: '#testing'
