@@ -21,8 +21,9 @@ jobs:
             path: ${{ github.workspace }}
   job-2:
     runs-on: ubuntu-latest
+    name: hi
     steps:
-      - name: Say World
+#       - name: Say World
       - uses: actions/checkout@v2         # checkout the repo
       - run: npm ci                       # install packages
       - run: npm test                     # run tests (configured to use jest-junit reporter)
