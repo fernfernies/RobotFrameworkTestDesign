@@ -46,7 +46,7 @@ jobs:
     
           
   publish-test-results:
-    name: "Publish Unit Tests Results"
+    name: "Publish Tests Results"
     needs: test
     runs-on: ubuntu-latest
     # the build-and-test job might be skipped, we don't need to run this job then
@@ -58,7 +58,7 @@ jobs:
         with:
           path: ${{ github.workspace }}
 
-      - name: Publish Unit Test Results
+      - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1
         with:
           files: ${{ github.workspace }}/**/*.xml
