@@ -12,13 +12,13 @@ jobs:
           env:
             BROWSER: chrome
             ROBOT_TESTS_DIR: ${{ github.workspace }}
-            ROBOT_REPORTS_DIR: ${{ github.workspace }}/reports
+#             ROBOT_REPORTS_DIR: ${{ github.workspace }}/re
         - name: Upload test results
           uses: actions/upload-artifact@v1
           if: always()
           with:
             name: reports
-            path: ${{ github.workspace }}/reports
+            path: ${{ github.workspace }}
   job-2:
     runs-on: ubuntu-latest
     steps:
@@ -56,9 +56,9 @@ jobs:
       - name: Download Artifacts
         uses: actions/download-artifact@v2
         with:
-          path: ${{ github.workspace }}/reports
+          path: ${{ github.workspace }}
 
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1
         with:
-          path: ${{ github.workspace }}/reports/*.xml
+          path: ${{ github.workspace }}/**/*.xml
