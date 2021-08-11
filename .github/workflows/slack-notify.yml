@@ -65,8 +65,8 @@ jobs:
 #             export REPO="$(echo "${{ github.repository }}" | awk -F / '{print $2}' | sed -e "s/:refs//")"
 #             echo "::set-env name=REPOSITORY_OWNER::$OWNER"
 #             echo "::set-env name=REPOSITORY_NAME::$REPO"
-      - name: Send report to commit
-        uses: joonvena/robotframework-reporter-action@v0.1
+      - name: Robot Reporter
+        uses: joonvena/robotframework-reporter-action@v1.0
         env:
             GH_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             REPO_OWNER: fernfernies
