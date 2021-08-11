@@ -72,7 +72,7 @@ jobs:
       - name: publish test
         uses: EnricoMi/publish-unit-test-result-action@v1
         with:
-          files: ${{ github.workspace }}/**/*.xml   
+          files: ${{ github.workspace }}/*.xml   
 #         env:
 #             GH_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #             REPO_OWNER: fernfernies
