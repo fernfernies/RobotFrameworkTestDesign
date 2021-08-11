@@ -67,9 +67,11 @@ jobs:
 #             echo "::set-env name=REPOSITORY_NAME::$REPO"
       - name: Robot Reporter
         uses: joonvena/robotframework-reporter-action@v1.0
-        env:
-            GH_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            REPO_OWNER: fernfernies
-            COMMIT_SHA: ${{ github.sha }}
-            REPOSITORY: RobotFrameworkTestDesign
-            REPORT_PATH: reports
+        with:
+          gh_access_token: ${{ secrets.GITHUB_TOKEN }}
+#         env:
+#             GH_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#             REPO_OWNER: fernfernies
+#             COMMIT_SHA: ${{ github.sha }}
+#             REPOSITORY: RobotFrameworkTestDesign
+#             REPORT_PATH: reports
