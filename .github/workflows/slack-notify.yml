@@ -18,10 +18,7 @@ jobs:
           if: always()
           with:
             name: reports
-            path: |
-              /home/runner/work/RobotFrameworkTestDesign/RobotFrameworkTestDesign/output.xml
-              /home/runner/work/RobotFrameworkTestDesign/RobotFrameworkTestDesign/log.html
-              /home/runner/work/RobotFrameworkTestDesign/RobotFrameworkTestDesign/report.html
+            path: ${{ github.workspace }}
   job-2:
     runs-on: ubuntu-latest
     steps:
@@ -59,10 +56,7 @@ jobs:
       - name: Download Artifacts
         uses: actions/download-artifact@v2
         with:
-           path: |
-              /home/runner/work/RobotFrameworkTestDesign/RobotFrameworkTestDesign/output.xml
-              /home/runner/work/RobotFrameworkTestDesign/RobotFrameworkTestDesign/log.html
-              /home/runner/work/RobotFrameworkTestDesign/RobotFrameworkTestDesign/report.html
+           path: ${{ github.workspace }}
       - name: Send report to commit
         uses: joonvena/robotframework-reporter-action@v1.0
         with:
