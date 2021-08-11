@@ -68,6 +68,11 @@ jobs:
         uses: joonvena/robotframework-reporter-action@v1.0
         with:
           gh_access_token: ${{ secrets.GITHUB_TOKEN }}
+        
+      - name: publish test
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        with:
+          files: artifacts/**/*.xml   
 #         env:
 #             GH_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #             REPO_OWNER: fernfernies
