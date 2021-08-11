@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1 (Python 3.8.2 on darwin)" generated="20210805 18:28:50.148" rpa="false" schemaversion="2">
+<suite id="s1" name="User" source="/Users/atchariya.sae/PycharmProjects/qa-auto-api/test_cases/gateway-bff/api/user.robot">
+<kw name="Generate Robot Automation Header With Cookie" library="common" type="SETUP">
+<arg>${url_crm_sabye_songkran}</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${headless_mode}==${TRUE}</arg>
+<arg>Open Browser</arg>
+<arg>${url}</arg>
+<arg>headlesschrome</arg>
+<arg>ELSE</arg>
+<arg>Open Browser</arg>
+<arg>${url}</arg>
+<arg>${web_driver}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>headlesschrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20210805 18:28:50.446" level="INFO">Opening browser 'headlesschrome' to base url 'https://staging-crm.sabye-songkran.com/'.</msg>
+<status status="PASS" starttime="20210805 18:28:50.446" endtime="20210805 18:28:54.065"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:50.445" endtime="20210805 18:28:54.065"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${txt_username}</arg>
+<arg>timeout=15s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210805 18:28:54.065" endtime="20210805 18:28:54.637"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_username}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210805 18:28:54.637" level="INFO">Typing text 'dung10@gmail.com' into text field '//*[@name='identifier']'.</msg>
+<status status="PASS" starttime="20210805 18:28:54.637" endtime="20210805 18:28:55.246"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_password}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210805 18:28:55.247" level="INFO">Typing text 'Dungnguyen@' into text field '//*[@name='password']'.</msg>
+<status status="PASS" starttime="20210805 18:28:55.247" endtime="20210805 18:28:55.373"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${btn_signin}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20210805 18:28:55.374" level="INFO">Clicking button '//*[@id="root"]/div/div/form/div[3]/button'.</msg>
+<status status="PASS" starttime="20210805 18:28:55.374" endtime="20210805 18:28:57.510"/>
+</kw>
+<kw name="Get Cookies" library="SeleniumLibrary">
+<var>${cookie}</var>
+<doc>Returns all cookies of the current page.</doc>
+<msg timestamp="20210805 18:28:57.515" level="INFO">${cookie} = ory_kratos_session=MTYyODE2MjkzN3xEdi1CQkFFQ180SUFBUkFCRUFBQVJfLUNBQUVHYzNSeWFXNW5EQThBRFhObGMzTnBiMjVmZEc5clpXNEdjM1J5YVc1bkRDSUFJSE5RY1VGYVJrMVJSWFU1ZUcxdWMzSnNhbFJ3TXpWYWIxTmhUM2h1YmtoRXzvsr_mu8lRC...</msg>
+<status status="PASS" starttime="20210805 18:28:57.511" endtime="20210805 18:28:57.515"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>content-type=application/json</arg>
+<arg>cookie=${cookie}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20210805 18:28:57.516" level="INFO">${headers} = {'content-type': 'application/json', 'cookie': 'ory_kratos_session=MTYyODE2MjkzN3xEdi1CQkFFQ180SUFBUkFCRUFBQVJfLUNBQUVHYzNSeWFXNW5EQThBRFhObGMzTnBiMjVmZEc5clpXNEdjM1J5YVc1bkRDSUFJSE5RY1VGYVJrMVJSWFU1Z...</msg>
+<status status="PASS" starttime="20210805 18:28:57.516" endtime="20210805 18:28:57.516"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>${GATEWAY_SESSION}</arg>
+<arg>${url}</arg>
+<arg>headers=${headers}</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20210805 18:28:57.516" level="INFO">Creating Session using : alias=https://staging-crm.sabye-songkran.com/, url=https://staging-crm.sabye-songkran.com/, headers={'content-type': 'application/json', 'cookie': 'ory_kratos_session=MTYyODE2MjkzN3xEdi1CQkFFQ180SUFBUkFCRUFBQVJfLUNBQUVHYzNSeWFXNW5EQThBRFhObGMzTnBiMjVmZEc5clpXNEdjM1J5YVc1bkRDSUFJSE5RY1VGYVJrMVJSWFU1ZUcxdWMzSnNhbFJ3TXpWYWIxTmhUM2h1YmtoRXzvsr_mu8lRC6CEpDWJVHL7ktdksErYvPFeIvKr8XR48g=='},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20210805 18:28:57.516" endtime="20210805 18:28:57.517"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:50.445" endtime="20210805 18:28:57.517"/>
+</kw>
+<test id="s1-t1" name="TC_001_USER - Get User Lookup Success">
+<kw name="Get User Lookup" library="user">
+<arg>role=${user['role']}</arg>
+<kw name="Get On Session" library="RequestsLibrary">
+<var>${RESP}</var>
+<arg>${GATEWAY_SESSION}</arg>
+<arg>api/bff/api/users/lookup</arg>
+<arg>params=${param_uri}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20210805 18:28:57.739" level="INFO">GET Request : url=https://staging-crm.sabye-songkran.com/api/bff/api/users/lookup?role=roles%2Fmanager 
+ path_url=/api/bff/api/users/lookup?role=roles%2Fmanager 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'content-type': 'application/json', 'cookie': 'ory_kratos_session=MTYyODE2MjkzN3xEdi1CQkFFQ180SUFBUkFCRUFBQVJfLUNBQUVHYzNSeWFXNW5EQThBRFhObGMzTnBiMjVmZEc5clpXNEdjM1J5YVc1bkRDSUFJSE5RY1VGYVJrMVJSWFU1ZUcxdWMzSnNhbFJ3TXpWYWIxTmhUM2h1YmtoRXzvsr_mu8lRC6CEpDWJVHL7ktdksErYvPFeIvKr8XR48g=='} 
+ body=None 
+ </msg>
+<msg timestamp="20210805 18:28:57.739" level="INFO">GET Response : url=https://staging-crm.sabye-songkran.com/api/bff/api/users/lookup?role=roles%2Fmanager 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 05 Aug 2021 11:28:57 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '6584', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'ETag': 'W/"19b8-tpsf+FX8OEHqVsHB6mGBhktyC6g"', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Content-Security-Policy': "block-all-mixed-content; default-src 'none'; base-uri 'none'; img-src 'self' blob: https://storage.googleapis.com; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://storage.googleapis.com; manifest-src 'self'; media-src 'self' https://storage.googleapis.com; frame-ancestors 'none'", 'Referrer-Policy': 'same-origin', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-XSS-Protection': '1; mode=block'} 
+ body=[{"key":"users/25e4085e-e10d-4e22-9408-056f46ac1f0c","value":"Apichaya Leangcharoeh"},{"key":"users/90f2fbb7-c6ff-4da1-b777-939e362a5a0c","value":"Arissara Ampornsilp"},{"key":"users/ab3fc971-93b7-463f-9af6-281b87a4c7ef","value":"Automated Manager One"},{"key":"users/0ff5ac47-bdb3-458c-a22a-7bb366ef9a47","value":"Binh Nguyen"},{"key":"users/9c1b7b24-1c33-4ca0-b2ac-6540e88824b2","value":"Chanuntida Junpanich"},{"key":"users/79ec42b8-9523-42ec-bd1d-ab200a6304a4","value":"chonticha -"},{"key":"users/3c897546-60d8-492e-9d4b-b3aef12bfa61","value":"Chotiros Chuenchavalit"},{"key":"users/422b6f66-f977-4970-ad7b-d996006371f3","value":"Chuda Manager"},{"key":"users/f367e100-fd7d-4be5-863c-6781aebd903a","value":"Dzung Nguyen"},{"key":"users/27a36ffd-f059-4088-a150-669a0216cb65","value":"Engchat Apaiwong"},{"key":"users/8f942fde-bc62-46ea-a475-567e4ff7a9a4","value":"hihi haha"},{"key":"users/011804ef-782c-40bc-a23d-6764b25f2321","value":"Jantima Butsanthia"},{"key":"users/01af3378-9dad-4b17-8c2b-ea2d80e817eb","value":"Jirapat Dejdanoo"},{"key":"users/b34feb2c-e5e7-4928-aa42-1b9e8bb34797","value":"Jittima Pongpomart"},{"key":"users/68370976-820e-4911-b34d-b9294110d83e","value":"Kassana Sathirasathaporn -"},{"key":"users/3b4c7465-5b32-4f7a-8233-db5b5fe08b6a","value":"Kirill Orlov"},{"key":"users/766bfc0e-ba89-4329-a9cd-8e4abc4470e4","value":"KTmanager11 Test"},{"key":"users/5aea9232-29e2-4237-af91-f9a244c6156e","value":"Kwanchanok Saetung"},{"key":"users/cd93f9de-b700-410e-bb20-1f9a2df4d8bc","value":"Le com"},{"key":"users/ad1012a5-9030-444a-80e1-9887a7ead472","value":"Le3 2345"},{"key":"users/742d8655-b33f-478b-89f7-5dad56f82939","value":"Linsayarat Kanana"},{"key":"users/0d115455-858b-463b-acca-0e858d391435","value":"Manager 32"},{"key":"users/de324fee-810d-4dd6-a152-6b557357e110","value":"Manager Test_124"},{"key":"users/e6045505-f044-402c-807d-f5ef385bda2c","value":"Manager Test_124"},{"key":"users/ec831ca2-d02b-473f-bd0c-f0c64730eb3f","value":"Manager_1 Test_yxz"},{"key":"users/f92636b2-efb1-4b34-986d-2edafe67909a","value":"Mayuree Kumpeng"},{"key":"users/d69c59b2-e78e-459a-b636-850b56945528","value":"Name rosie"},{"key":"users/67105be1-5f33-4cbd-b614-caf7bcd4ca2e","value":"Nana_s uiuiui_s"},{"key":"users/61886b87-76f2-4e78-9cb1-37981cc80ab5","value":"Nana_sa uiuiui_sa"},{"key":"users/8b21dd21-38ae-48e1-86ef-521e9ec3b3b1","value":"Nantawan Kongkanon"},{"key":"users/81d3d85f-29d1-42a9-8fe0-f700bcca1322","value":"Naraporn Boontep"},{"key":"users/21f46ef4-ea91-497c-9e8c-d67e533b9eed","value":"Natcha Thaosridee"},{"key":"users/f76a1a79-9295-452f-b5ae-06007964884e","value":"Nattapol Sikhamsao"},{"key":"users/fca6c4d4-6dba-49b9-88fd-9508b65d6335","value":"Nattida Kaewsinual"},{"key":"users/9fd2c609-3144-4b4b-b962-0fec795d50d6","value":"Nattida Kaewsinual"},{"key":"users/d9f98dec-f783-4559-b41c-617aa67c5146","value":"Nijaporn Worapojpisut"},{"key":"users/0489a39a-4f7d-4ee8-86d7-db4e6c417df3","value":"No Name"},{"key":"users/687403d7-f9fb-4d40-94b3-fc7e0cef0fa3","value":"Nontawat Seesamlee"},{"key":"users/3f1d60f1-01d1-47f6-8f50-d08a2c8784f4","value":"Nuttapon Worasingpun"},{"key":"users/3e00f1b8-0015-4cd4-b05a-86cfc1b02464","value":"Nuttapon Worasingpun"},{"key":"users/ede71f49-3ede-4914-8711-d4f7fa7bb2af","value":"Onnicha Yodphol"},{"key":"users/6d439cf6-8192-44a4-84db-47ab745dfa11","value":"Orawan Thonganan"},{"key":"users/414fe5e1-806e-49d8-bb1b-b88467b8dbcc","value":"Pakamon Daravat "},{"key":"users/fe8adafc-318c-41d8-bbcd-599afeae2ef0","value":"Pakawan Pakkawat"},{"key":"users/d9b182e5-fe05-45d8-9091-e90fed99db20","value":"Pamika S"},{"key":"users/5c4775ba-19cc-4c2c-929a-75b36dc2b9d5","value":"Panrawe B"},{"key":"users/58364ae9-9226-4e4d-9c3c-afe81aca3242","value":"Panrawe B"},{"key":"users/d18294f0-b092-424f-b048-7bcee7f6fdfc","value":"Panrawe B"},{"key":"users/1444e4d7-123d-4d0a-9d01-4bb1c77880b7","value":"Panrawe B"},{"key":"users/27cc8f63-b48b-451d-ae19-09e616f70ef6","value":"Panrawe B"},{"key":"users/c4fd1a48-8cdb-4036-a56a-edbb1dbed88f","value":"Panrawe B"},{"key":"users/1557b5c2-fb48-47f9-a740-01e9d2e69fc2","value":"Panrawe B22"},{"key":"users/64a4f60e-7b10-4af6-8bb9-8cb3583ab802","value":"Patthawat Donploypech"},{"key":"users/69541411-bec8-4da4-86dc-fd7e4a0ce2e2","value":"Pattra Fakkeaw"},{"key":"users/d46383b9-0826-49a8-9c46-d9f79a205d01","value":"Phanaon Sertpannuk"},{"key":"users/ab24b7b2-d048-4c48-9213-ae46a8d6c205","value":"Phongyot Phongwattanawijit"},{"key":"users/88061377-5b45-41b5-bc7c-73962ad42790","value":"Prangmas Phonprai"},{"key":"users/24c0ad68-153c-4045-928d-573b97afbb8c","value":"Prasopchok Khammamun"},{"key":"users/e94a24e8-da46-49e3-b371-d325fceec1c8","value":"SaiB8 SaiB18"},{"key":"users/57b55574-ec39-4acf-b03b-bfe776ccaac7","value":"SaiHUpdated Test"},{"key":"users/2436c6bc-13dc-44cf-866b-439c3c372668","value":"SaiN555 Pham"},{"key":"users/2212ca36-0ccc-4129-98f2-a77514abfeb1","value":"SaiN555 Pham2"},{"key":"users/5712864e-5a72-451a-964f-a400aef71ff3","value":"SaiN555 Pham22"},{"key":"users/7f683ed2-aaaa-4c5c-bf15-e09151c1722a","value":"SaiN55511 Pham"},{"key":"users/645c26b1-c25b-42fd-a00b-e407dda5d9ca","value":"SaiN5551112 Pham21"},{"key":"users/052fc376-bba3-4ef0-987b-9fd4317f869f","value":"SaiN5551112 Pham22"},{"key":"users/9fac07fb-c04e-48f1-8fdd-e176d0cf2f58","value":"SaiN5552 Pham 01"},{"key":"users/5b3d2fd0-b503-40f9-a03e-b151abea679a","value":"Sarawut Thitinanthawornsuk"},{"key":"users/f54e7adf-277b-4b10-b6ed-cf6313d8b7b5","value":"Sataporn Promkul"},{"key":"users/a264f603-22cb-493a-a8e3-c19ea2fbe5fc","value":"Sittichai Buakeaw"},{"key":"users/4f2a65ad-f459-4ffb-9944-9c9ced3b0817","value":"Sunee -"},{"key":"users/4fd9eb3d-0ffe-4e8c-9c77-0fc2619c0ee8","value":"Tanapat Choopakpanich"},{"key":"users/15359af5-9725-48c0-8747-4f8041f18009","value":"Teetuch Wongsaad"},{"key":"users/b0629712-3ad2-4b4a-aa97-56d7ba7bd32b","value":"Test Three 33"},{"key":"users/5988c6d9-9bb9-45d1-8ec0-e60fd2001a67","value":"Test2 Testing2"},{"key":"users/c3414142-75a4-486a-a08a-59f0e7e144d1","value":"Test9 Test9"},{"key":"users/f6af311c-2ec6-4c0f-8fa0-ea97605a8ba6","value":"tetstetststatfste ywfteuwe nanno nanno nano nano naonnoajsdofad naonoandn maosnoas náonasn"},{"key":"users/f3c35c2f-9039-43a1-bd49-05fde03605a3","value":"Thakrit Kanjanasamranwong"},{"key":"users/4a39f2e4-513b-4ce5-93a1-1a42fd94c0cf","value":"Thawaree Kitipan"},{"key":"users/e145df2b-4d79-43c3-9a19-3a0e2c7d8cd2","value":"Thitipapat Yortthong"},{"key":"users/c058f9a3-3469-43b8-a23e-cd2e65b8d67c","value":"Yanin -"},{"key":"users/232f5293-43a0-468a-b818-fc2161845ba8","value":"Zenda2 Pipo2"}] 
+ </msg>
+<msg timestamp="20210805 18:28:57.739" level="INFO">${RESP} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210805 18:28:57.519" endtime="20210805 18:28:57.739"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${RESP}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20210805 18:28:57.740" level="INFO">${RESP} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210805 18:28:57.739" endtime="20210805 18:28:57.740"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:57.518" endtime="20210805 18:28:57.740"/>
+</kw>
+<kw name="Response Code Should Return - 200 OK" library="common">
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Status Should Be</arg>
+<arg>200</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20210805 18:28:57.740" endtime="20210805 18:28:57.740"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:57.740" endtime="20210805 18:28:57.740"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Should Be Equal As Strings</arg>
+<arg>${RESP.reason}</arg>
+<arg>OK</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${RESP.reason}</arg>
+<arg>OK</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20210805 18:28:57.741" endtime="20210805 18:28:57.741"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:57.741" endtime="20210805 18:28:57.741"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:57.740" endtime="20210805 18:28:57.742"/>
+</kw>
+<kw name="Response Should Contain Property With String Value" library="common">
+<arg>$[0].key</arg>
+<arg>${expected_get_user_success['key']}</arg>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${property_value}</var>
+<arg>${RESP.json()}</arg>
+<arg>${property}</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20210805 18:28:57.781" level="INFO">${property_value} = ['users/25e4085e-e10d-4e22-9408-056f46ac1f0c']</msg>
+<status status="PASS" starttime="20210805 18:28:57.743" endtime="20210805 18:28:57.781"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>should be equal as strings</arg>
+<arg>${property_value}</arg>
+<arg>${value}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${property_value}</arg>
+<arg>${value}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20210805 18:28:57.781" endtime="20210805 18:28:57.781"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:57.781" endtime="20210805 18:28:57.781"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:57.742" endtime="20210805 18:28:57.781"/>
+</kw>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>$[0].key</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<msg timestamp="20210805 18:28:57.781" level="INFO">Length is 8</msg>
+<status status="PASS" starttime="20210805 18:28:57.781" endtime="20210805 18:28:57.781"/>
+</kw>
+<kw name="Response Should Contain Property With String Value" library="common">
+<arg>$[0].value</arg>
+<arg>${expected_get_user_success['value']}</arg>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${property_value}</var>
+<arg>${RESP.json()}</arg>
+<arg>${property}</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20210805 18:28:57.801" level="INFO">${property_value} = ['Apichaya Leangcharoeh']</msg>
+<status status="PASS" starttime="20210805 18:28:57.782" endtime="20210805 18:28:57.801"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>should be equal as strings</arg>
+<arg>${property_value}</arg>
+<arg>${value}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${property_value}</arg>
+<arg>${value}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20210805 18:28:57.801" endtime="20210805 18:28:57.802"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:57.801" endtime="20210805 18:28:57.802"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:57.782" endtime="20210805 18:28:57.802"/>
+</kw>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>$[0].value</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<msg timestamp="20210805 18:28:57.802" level="INFO">Length is 10</msg>
+<status status="PASS" starttime="20210805 18:28:57.802" endtime="20210805 18:28:57.802"/>
+</kw>
+<tag>api</tag>
+<tag>gateway-bff</tag>
+<tag>low</tag>
+<tag>QAA-112</tag>
+<tag>regression</tag>
+<tag>user</tag>
+<status status="PASS" starttime="20210805 18:28:57.517" endtime="20210805 18:28:57.802"/>
+</test>
+<test id="s1-t2" name="TC_002_USER- Get User Lookup with Empty">
+<kw name="Get User Lookup" library="user">
+<arg>role=${user['empty_role']}</arg>
+<kw name="Get On Session" library="RequestsLibrary">
+<var>${RESP}</var>
+<arg>${GATEWAY_SESSION}</arg>
+<arg>api/bff/api/users/lookup</arg>
+<arg>params=${param_uri}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20210805 18:28:57.877" level="INFO">GET Request : url=https://staging-crm.sabye-songkran.com/api/bff/api/users/lookup?role=roletest 
+ path_url=/api/bff/api/users/lookup?role=roletest 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'content-type': 'application/json', 'cookie': 'ory_kratos_session=MTYyODE2MjkzN3xEdi1CQkFFQ180SUFBUkFCRUFBQVJfLUNBQUVHYzNSeWFXNW5EQThBRFhObGMzTnBiMjVmZEc5clpXNEdjM1J5YVc1bkRDSUFJSE5RY1VGYVJrMVJSWFU1ZUcxdWMzSnNhbFJ3TXpWYWIxTmhUM2h1YmtoRXzvsr_mu8lRC6CEpDWJVHL7ktdksErYvPFeIvKr8XR48g=='} 
+ body=None 
+ </msg>
+<msg timestamp="20210805 18:28:57.877" level="INFO">GET Response : url=https://staging-crm.sabye-songkran.com/api/bff/api/users/lookup?role=roletest 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 05 Aug 2021 11:28:57 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'ETag': 'W/"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w"', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Content-Security-Policy': "block-all-mixed-content; default-src 'none'; base-uri 'none'; img-src 'self' blob: https://storage.googleapis.com; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://storage.googleapis.com; manifest-src 'self'; media-src 'self' https://storage.googleapis.com; frame-ancestors 'none'", 'Referrer-Policy': 'same-origin', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-XSS-Protection': '1; mode=block'} 
+ body=[] 
+ </msg>
+<msg timestamp="20210805 18:28:57.877" level="INFO">${RESP} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210805 18:28:57.804" endtime="20210805 18:28:57.877"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${RESP}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20210805 18:28:57.878" level="INFO">${RESP} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210805 18:28:57.878" endtime="20210805 18:28:57.878"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:57.803" endtime="20210805 18:28:57.878"/>
+</kw>
+<kw name="Response Code Should Return - 200 OK" library="common">
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Status Should Be</arg>
+<arg>200</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20210805 18:28:57.878" endtime="20210805 18:28:57.879"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:57.878" endtime="20210805 18:28:57.879"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Should Be Equal As Strings</arg>
+<arg>${RESP.reason}</arg>
+<arg>OK</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${RESP.reason}</arg>
+<arg>OK</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20210805 18:28:57.879" endtime="20210805 18:28:57.879"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:57.879" endtime="20210805 18:28:57.880"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:57.878" endtime="20210805 18:28:57.880"/>
+</kw>
+<kw name="Response Should Be Empty" library="common">
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Should Be Empty</arg>
+<arg>${RESP.json()}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Should Be Empty" library="BuiltIn">
+<arg>${RESP.json()}</arg>
+<doc>Verifies that the given item is empty.</doc>
+<msg timestamp="20210805 18:28:57.881" level="INFO">Length is 0</msg>
+<status status="PASS" starttime="20210805 18:28:57.880" endtime="20210805 18:28:57.881"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:57.880" endtime="20210805 18:28:57.881"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:57.880" endtime="20210805 18:28:57.881"/>
+</kw>
+<tag>api</tag>
+<tag>gateway-bff</tag>
+<tag>low</tag>
+<tag>QAA-112</tag>
+<tag>regression</tag>
+<tag>user</tag>
+<status status="PASS" starttime="20210805 18:28:57.802" endtime="20210805 18:28:57.881"/>
+</test>
+<test id="s1-t3" name="TC_003_USER- Get User Lookup Create By Success">
+<kw name="Get Team Lookup Create By" library="user">
+<kw name="Get On Session" library="RequestsLibrary">
+<var>${RESP}</var>
+<arg>${GATEWAY_SESSION}</arg>
+<arg>api/bff/api/users/lookup/create-by</arg>
+<arg>params=${param_uri}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20210805 18:28:57.961" level="INFO">GET Request : url=https://staging-crm.sabye-songkran.com/api/bff/api/users/lookup/create-by 
+ path_url=/api/bff/api/users/lookup/create-by 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'content-type': 'application/json', 'cookie': 'ory_kratos_session=MTYyODE2MjkzN3xEdi1CQkFFQ180SUFBUkFCRUFBQVJfLUNBQUVHYzNSeWFXNW5EQThBRFhObGMzTnBiMjVmZEc5clpXNEdjM1J5YVc1bkRDSUFJSE5RY1VGYVJrMVJSWFU1ZUcxdWMzSnNhbFJ3TXpWYWIxTmhUM2h1YmtoRXzvsr_mu8lRC6CEpDWJVHL7ktdksErYvPFeIvKr8XR48g=='} 
+ body=None 
+ </msg>
+<msg timestamp="20210805 18:28:57.961" level="INFO">GET Response : url=https://staging-crm.sabye-songkran.com/api/bff/api/users/lookup/create-by 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 05 Aug 2021 11:28:58 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1100', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'ETag': 'W/"44c-+iNwWFJHZkkQMsSdk1XMDTRVTpE"', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Content-Security-Policy': "block-all-mixed-content; default-src 'none'; base-uri 'none'; img-src 'self' blob: https://storage.googleapis.com; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://storage.googleapis.com; manifest-src 'self'; media-src 'self' https://storage.googleapis.com; frame-ancestors 'none'", 'Referrer-Policy': 'same-origin', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-XSS-Protection': '1; mode=block'} 
+ body=[{"key":"users/bc017090-8f84-4ee8-b066-42f83115c07e","value":"Admin test"},{"key":"users/168af304-8b06-46ce-8fa6-af32bb9193ea","value":"Alex Stansfield"},{"key":"users/e7da8816-ce0f-4060-b8f0-b0dd0d37c6cb","value":"Arina Madau"},{"key":"users/6f35b998-c1e0-4dea-bd0b-ee3a008242f9","value":"Attila Molnar"},{"key":"users/9a6bc452-e0ad-4604-ab5e-9c7bf924801e","value":"Binh Nguyen"},{"key":"users/4a4520d0-5b19-44b5-9839-10830b647d0e","value":"Chuda Kittipotnpimol"},{"key":"users/40715c16-5506-4ff2-83c0-29ac82feed66","value":"dung nguyen"},{"key":"users/60644dcf-1aa6-4565-9d04-124e155641c2","value":"dung nguyen1"},{"key":"users/08a5b305-4a4d-4de3-b5c3-2b3b25622740","value":"Kittiya Asaisart"},{"key":"users/f7e16d01-6abf-4e23-8094-1ae1a9e54501","value":"KTAdmin11 Test"},{"key":"users/c1fd229c-95b7-41cf-94a8-c59d0c0311b4","value":"Panrawe B_Test"},{"key":"users/0cb0109e-e0c4-428a-9b18-684034ed7d4b","value":"Ratchata Opassamutechai"},{"key":"users/c37520d6-23a4-4be0-99cb-77ffb168e28f","value":"Suthida Logavit"},{"key":"users/33a5f5cb-68a7-4c74-9a97-bb918a95cad1","value":"TestTemplate Three"}] 
+ </msg>
+<msg timestamp="20210805 18:28:57.961" level="INFO">${RESP} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210805 18:28:57.882" endtime="20210805 18:28:57.962"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${RESP}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20210805 18:28:57.962" level="INFO">${RESP} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210805 18:28:57.962" endtime="20210805 18:28:57.962"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:57.881" endtime="20210805 18:28:57.962"/>
+</kw>
+<kw name="Response Code Should Return - 200 OK" library="common">
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Status Should Be</arg>
+<arg>200</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20210805 18:28:57.962" endtime="20210805 18:28:57.963"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:57.962" endtime="20210805 18:28:57.963"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>Should Be Equal As Strings</arg>
+<arg>${RESP.reason}</arg>
+<arg>OK</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${RESP.reason}</arg>
+<arg>OK</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20210805 18:28:57.963" endtime="20210805 18:28:57.963"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:57.963" endtime="20210805 18:28:57.963"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:57.962" endtime="20210805 18:28:57.964"/>
+</kw>
+<kw name="Response Should Contain Property With String Value" library="common">
+<arg>$[0].key</arg>
+<arg>${expected_get_user_createby_success['key']}</arg>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${property_value}</var>
+<arg>${RESP.json()}</arg>
+<arg>${property}</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20210805 18:28:57.983" level="INFO">${property_value} = ['users/bc017090-8f84-4ee8-b066-42f83115c07e']</msg>
+<status status="PASS" starttime="20210805 18:28:57.964" endtime="20210805 18:28:57.983"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>should be equal as strings</arg>
+<arg>${property_value}</arg>
+<arg>${value}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${property_value}</arg>
+<arg>${value}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20210805 18:28:57.983" endtime="20210805 18:28:57.983"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:57.983" endtime="20210805 18:28:57.983"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:57.964" endtime="20210805 18:28:57.983"/>
+</kw>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>$[0].key</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<msg timestamp="20210805 18:28:57.984" level="INFO">Length is 8</msg>
+<status status="PASS" starttime="20210805 18:28:57.984" endtime="20210805 18:28:57.984"/>
+</kw>
+<kw name="Response Should Contain Property With String Value" library="common">
+<arg>$[0].value</arg>
+<arg>${expected_get_user_createby_success['value']}</arg>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${property_value}</var>
+<arg>${RESP.json()}</arg>
+<arg>${property}</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20210805 18:28:58.002" level="INFO">${property_value} = ['Admin test']</msg>
+<status status="PASS" starttime="20210805 18:28:57.985" endtime="20210805 18:28:58.002"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>should be equal as strings</arg>
+<arg>${property_value}</arg>
+<arg>${value}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${property_value}</arg>
+<arg>${value}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20210805 18:28:58.003" endtime="20210805 18:28:58.003"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:58.003" endtime="20210805 18:28:58.003"/>
+</kw>
+<status status="PASS" starttime="20210805 18:28:57.984" endtime="20210805 18:28:58.003"/>
+</kw>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>$[0].value</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<msg timestamp="20210805 18:28:58.003" level="INFO">Length is 10</msg>
+<status status="PASS" starttime="20210805 18:28:58.003" endtime="20210805 18:28:58.003"/>
+</kw>
+<tag>api</tag>
+<tag>gateway-bff</tag>
+<tag>low</tag>
+<tag>QAA-113</tag>
+<tag>regression</tag>
+<tag>user</tag>
+<status status="PASS" starttime="20210805 18:28:57.881" endtime="20210805 18:28:58.003"/>
+</test>
+<status status="PASS" starttime="20210805 18:28:50.150" endtime="20210805 18:28:58.004"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="3" fail="0" skip="0">api</stat>
+<stat pass="3" fail="0" skip="0">gateway-bff</stat>
+<stat pass="3" fail="0" skip="0">low</stat>
+<stat pass="2" fail="0" skip="0">QAA-112</stat>
+<stat pass="1" fail="0" skip="0">QAA-113</stat>
+<stat pass="3" fail="0" skip="0">regression</stat>
+<stat pass="3" fail="0" skip="0">user</stat>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="User">User</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
