@@ -70,37 +70,19 @@ jobs:
       - name: Download Artifacts
         uses: actions/download-artifact@v1
         with:
-          name:  reports
-#            path: ${{ github.workspace }}
-#       - name: Get Repository Owner & Name
-#         run: |
-#             export OWNER="$(echo "${{ github.repository }}" | awk -F / '{print $1}' | sed -e "s/:refs//")"
-#             export REPO="$(echo "${{ github.repository }}" | awk -F / '{print $2}' | sed -e "s/:refs//")"
-#             echo "::set-env name=REPOSITORY_OWNER::$OWNER"
-#             echo "::set-env name=REPOSITORY_NAME::$REPO"
+          name:  reports      
       - name: Robot Reporter
         uses: joonvena/robotframework-reporter-action@v1.0
         with:
           gh_access_token: ${{ secrets.GITHUB_TOKEN }}
           
-      - name: publish test
-        uses: EnricoMi/publish-unit-test-result-action@v1
-        with:
-          files: reports/*.xml    
+#       - name: publish test
+#         uses: EnricoMi/publish-unit-test-result-action@v1
+#         with:
+#           files: reports/*.xml    
       - name: check path
         run: ls
-        
-#       - name: Upload to slack step  
-#         uses: MeilCli/slack-upload-file@v1
-#         with:
-#           slack_token: ${{ secrets.SLACK_TOKEN }}
-#           channels: '#testing' 
-#           file_path: 'reports/report.html'
-#           file_name: 'report.html'
-#           file_type: 'html'
-#           initial_comment: 'post by slack-upload-file'
-        
-        
+         
       - name: Slack File Upload
         uses: adrey/slack-file-upload-action@1.0.5
         with:
@@ -108,20 +90,3 @@ jobs:
           path: reports/report.html
           channel: '#testing'  
           
-
-#   report_gen:
-#     runs-on: ubuntu-latest
-#     needs: test
-#     steps:
-#     - uses: dorny/test-reporter@v1
-#       with:
-#         artifact: reports           # artifact name
-#         name: reports                 # Name of the check run which will be created
-#         path: '*.xml'                     # Path to test results (inside artifact .zip)
-#         reporter: jest-junit              # Format of test results       
-#         env:
-#             GH_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#             REPO_OWNER: fernfernies
-#             COMMIT_SHA: ${{ github.sha }}
-#             REPOSITORY: RobotFrameworkTestDesign
-#             REPORT_PATH: reports
