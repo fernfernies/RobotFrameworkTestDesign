@@ -80,7 +80,7 @@ jobs:
         uses: adrey/slack-file-upload-action@master
         with:
           token: ${{ secrets.SLACK_TOKEN }}
-          path: ${{ github.workspace }}/reports/report.html
+          path: reports/report.html
           channel: '#testing'  
 #   report_gen:
 #     runs-on: ubuntu-latest
