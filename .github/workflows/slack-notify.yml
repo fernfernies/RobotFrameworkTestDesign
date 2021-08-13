@@ -76,23 +76,23 @@ jobs:
       - name: check path
         run: ls
         
-      - name: Upload to slack step  
-        uses: MeilCli/slack-upload-file@v1
-        with:
-          slack_token: ${{ secrets.SLACK_TOKEN }}
-          channels: '#testing' 
-          file_path: 'reports/report.html'
-          file_name: 'report.html'
-          file_type: 'html'
-          initial_comment: 'post by slack-upload-file'
-        
-        
-#       - name: Upload to slack step
-#         uses: adrey/slack-file-upload-action@1.0.5
+#       - name: Upload to slack step  
+#         uses: MeilCli/slack-upload-file@v1
 #         with:
-#           token: ${{ secrets.SLACK_TOKEN }}
-#           path: reports/report.html
-#           channel: '#testing'  
+#           slack_token: ${{ secrets.SLACK_TOKEN }}
+#           channels: '#testing' 
+#           file_path: 'reports/report.html'
+#           file_name: 'report.html'
+#           file_type: 'html'
+#           initial_comment: 'post by slack-upload-file'
+        
+        
+      - name: Upload to slack step
+        uses: adrey/slack-file-upload-action@master
+        with:
+          token: ${{ secrets.SLACK_TOKEN }}
+          path: reports/report.html
+          channel: '#testing'  
 #   report_gen:
 #     runs-on: ubuntu-latest
 #     needs: test
