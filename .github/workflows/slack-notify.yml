@@ -87,6 +87,6 @@ jobs:
         uses: adrey/slack-file-upload-action@1.0.5
         with:
           token: ${{ secrets.SLACK_TOKEN }}
-          path: reports/report.html
+          path: reports/reports.zip
           channel: '#testing'  
           
