@@ -68,19 +68,22 @@ jobs:
         uses: joonvena/robotframework-reporter-action@v1.0
         with:
           gh_access_token: ${{ secrets.GITHUB_TOKEN }}
-        
-      - name: Test Report
-        uses: dorny/test-reporter@v1
-        if: success() || failure()    # run this step even if previous step failed
-        with:
-          name: JEST Tests            # Name of the check run which will be created
-          path: reports/jest-*.xml    # Path to test results
-          reporter: jest-junit        # Format of test results
           
       - name: publish test
         uses: EnricoMi/publish-unit-test-result-action@v1
         with:
           files: reports/*.xml   
+          
+          
+  report_gen:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: dorny/test-reporter@v1
+      with:
+        artifact: reports           # artifact name
+        name: reports                 # Name of the check run which will be created
+        path: '*.xml'                     # Path to test results (inside artifact .zip)
+        reporter: jest-junit              # Format of test results       
 #         env:
 #             GH_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #             REPO_OWNER: fernfernies
