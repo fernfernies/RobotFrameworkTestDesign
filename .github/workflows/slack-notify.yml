@@ -73,7 +73,9 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v1
         with:
           files: reports/*.xml    
-          
+      - name: check path
+        run: ls
+        
       - name: Upload to slack step
         uses: adrey/slack-file-upload-action@master
         with:
