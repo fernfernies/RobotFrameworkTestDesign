@@ -1,249 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.2.1 (Python 3.6.12 on darwin)" generated="20210617 22:18:38.940" rpa="false">
-<suite id="s1" name="Testcase" source="/Users/vipavee.moj/test/testcase.robot">
-<test id="s1-t1" name="TC_004 Order pizza - wrong access token">
-<kw name="Sent post request to login success" library="common_keywords">
-<arguments>
-<arg>${login_success}</arg>
-</arguments>
-<msg timestamp="20210617 22:18:39.138" level="TRACE">Arguments: [ ${body}={'password': 'test', 'username': 'test'} ]</msg>
-<kw name="Create Dictionary" library="BuiltIn">
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<arguments>
-<arg>Content-Type=application/json</arg>
-</arguments>
-<assign>
-<var>${headers}</var>
-</assign>
-<msg timestamp="20210617 22:18:39.138" level="TRACE">Arguments: [ 'Content-Type=application/json' ]</msg>
-<msg timestamp="20210617 22:18:39.138" level="TRACE">Return: {'Content-Type': 'application/json'}</msg>
-<msg timestamp="20210617 22:18:39.139" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20210617 22:18:39.138" endtime="20210617 22:18:39.139"></status>
+<robot generator="Robot 4.1 (Python 3.8.2 on darwin)" generated="20210813 11:13:28.333" rpa="false" schemaversion="2">
+<suite id="s1" name="Exam01" source="/Users/atchariya.sae/PycharmProjects/RobotFrameworkTestDesign/exam01.robot">
+<test id="s1-t1" name="Sorting Age">
+<kw name="Open Selenium Page">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<arg>${Browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20210813 11:13:28.506" level="INFO">Opening browser 'chrome' to base url 'https://www.seleniumeasy.com/test/'.</msg>
+<status status="PASS" starttime="20210813 11:13:28.505" endtime="20210813 11:13:37.822"/>
 </kw>
-<kw name="Create Session" library="RequestsLibrary">
-<doc>Create Session: create a HTTP session to a server</doc>
-<arguments>
-<arg>session</arg>
-<arg>${orderPizza['url']}</arg>
-<arg>disable_warnings=1</arg>
-</arguments>
-<msg timestamp="20210617 22:18:39.139" level="TRACE">Arguments: [ 'session' | 'https://order-pizza-api.herokuapp.com/api' | disable_warnings=1 ]</msg>
-<msg timestamp="20210617 22:18:39.139" level="INFO">Creating Session using : alias=session, url=https://order-pizza-api.herokuapp.com/api, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<msg timestamp="20210617 22:18:39.139" level="DEBUG">Creating session: session</msg>
-<msg timestamp="20210617 22:18:39.139" level="DEBUG">Argument types are:
-&lt;class 'bool'&gt;</msg>
-<msg timestamp="20210617 22:18:39.139" level="TRACE">Return: &lt;requests.sessions.Session object at 0x10e764198&gt;</msg>
-<status status="PASS" starttime="20210617 22:18:39.139" endtime="20210617 22:18:39.139"></status>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20210813 11:13:37.823" endtime="20210813 11:13:37.969"/>
 </kw>
-<kw name="Post Request" library="RequestsLibrary">
-<doc>Send a POST request on the session object found using the
-given `alias`</doc>
-<arguments>
-<arg>session</arg>
-<arg>/auth</arg>
-<arg>headers=${headers}</arg>
-<arg>data=${body}</arg>
-</arguments>
-<assign>
-<var>${response}</var>
-</assign>
-<msg timestamp="20210617 22:18:39.139" level="TRACE">Arguments: [ 'session' | '/auth' | headers={'Content-Type': 'application/json'} | data={'password': 'test', 'username': 'test'} ]</msg>
-<msg timestamp="20210617 22:18:40.136" level="DEBUG">post response: {"access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjM5NDMxMjAsIm5iZiI6MTYyMzk0MzEyMCwianRpIjoiNjMzODY2MjctN2Y2NS00ZmYxLWE4MzItYTJhMTgxMjc1MGQ2IiwiZXhwIjoxNjIzOTQ0MDIwLCJpZGVudGl0eSI6InRlc3QiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.9jb_sw_8oDHP6h-1HT-tEIORpGIMuCoQ1G1zgk3ud4U"}
-</msg>
-<msg timestamp="20210617 22:18:40.137" level="INFO">Post Request using : alias=session, uri=/auth, data={"password": "test", "username": "test"}, headers={'Content-Type': 'application/json'}, files=None, allow_redirects=True </msg>
-<msg timestamp="20210617 22:18:40.137" level="TRACE">Return: &lt;Response [200]&gt;</msg>
-<msg timestamp="20210617 22:18:40.137" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20210617 22:18:39.139" endtime="20210617 22:18:40.137"></status>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20210813 11:13:38.971" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20210813 11:13:37.970" endtime="20210813 11:13:38.972"/>
 </kw>
-<kw name="Should Be Equal As Integers" library="BuiltIn">
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<arguments>
-<arg>200</arg>
-<arg>${response.status_code}</arg>
-<arg>Status code is not correct. Expect 200 but ${response.status_code}</arg>
-</arguments>
-<msg timestamp="20210617 22:18:40.138" level="TRACE">Arguments: [ '200' | 200 | 'Status code is not correct. Expect 200 but 200' ]</msg>
-<msg timestamp="20210617 22:18:40.138" level="INFO">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;class 'int'&gt;</msg>
-<msg timestamp="20210617 22:18:40.138" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20210617 22:18:40.137" endtime="20210617 22:18:40.138"></status>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${close_popup}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210813 11:13:38.976" level="INFO">Clicking element '//*[@id="at-cv-lightbox-close"]'.</msg>
+<status status="PASS" starttime="20210813 11:13:38.973" endtime="20210813 11:13:39.422"/>
 </kw>
-<kw name="To Json" library="RequestsLibrary">
-<doc>Convert a string to a JSON object</doc>
-<arguments>
-<arg>${response.text}</arg>
-</arguments>
-<assign>
-<var>${login_response}</var>
-</assign>
-<msg timestamp="20210617 22:18:40.139" level="TRACE">Arguments: [ '{"access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjM5NDMxMjAsIm5iZiI6MTYyMzk0MzEyMCwianRpIjoiNjMzODY2MjctN2Y2NS00ZmYxLWE4MzItYTJhMTgxMjc1MGQ2IiwiZXhwIjoxNjIzOTQ0MDIwLCJpZGVudGl0eSI6InRlc3QiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.9jb_sw_8oDHP6h-1HT-tEIORpGIMuCoQ1G1zgk3ud4U"}\n' ]</msg>
-<msg timestamp="20210617 22:18:40.139" level="INFO">To JSON using : content={"access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjM5NDMxMjAsIm5iZiI6MTYyMzk0MzEyMCwianRpIjoiNjMzODY2MjctN2Y2NS00ZmYxLWE4MzItYTJhMTgxMjc1MGQ2IiwiZXhwIjoxNjIzOTQ0MDIwLCJpZGVudGl0eSI6InRlc3QiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.9jb_sw_8oDHP6h-1HT-tEIORpGIMuCoQ1G1zgk3ud4U"}
- </msg>
-<msg timestamp="20210617 22:18:40.139" level="INFO">To JSON using : pretty_print=False </msg>
-<msg timestamp="20210617 22:18:40.139" level="TRACE">Return: {'access_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjM5NDMxMjAsIm5iZiI6MTYyMzk0MzEyMCwianRpIjoiNjMzODY2MjctN2Y2NS00ZmYxLWE4MzItYTJhMTgxMjc1MGQ2IiwiZXhwIjoxNjIzOTQ0MDIwLCJpZGVudGl0eSI6InRlc3QiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.9jb_sw_8oDHP6h-1HT-tEIORpGIMuCoQ1G1zgk3ud4U'}</msg>
-<msg timestamp="20210617 22:18:40.139" level="INFO">${login_response} = {'access_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjM5NDMxMjAsIm5iZiI6MTYyMzk0MzEyMCwianRpIjoiNjMzODY2MjctN2Y2NS00ZmYxLWE4MzItYTJhMTgxMjc1MGQ2IiwiZXhwIjoxNjIzOTQ0MDIwLCJpZGVudGl0eSI6I...</msg>
-<status status="PASS" starttime="20210617 22:18:40.138" endtime="20210617 22:18:40.139"></status>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20210813 11:13:40.054" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-7.png"&gt;&lt;img src="selenium-screenshot-7.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20210813 11:13:39.422" endtime="20210813 11:13:40.054"/>
 </kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>${login_response['access_token']}</arg>
-</arguments>
-<assign>
-<var>${access_token}</var>
-</assign>
-<msg timestamp="20210617 22:18:40.140" level="TRACE">Arguments: [ 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjM5NDMxMjAsIm5iZiI6MTYyMzk0MzEyMCwianRpIjoiNjMzODY2MjctN2Y2NS00ZmYxLWE4MzItYTJhMTgxMjc1MGQ2IiwiZXhwIjoxNjIzOTQ0MDIwLCJpZGVudGl0eSI6InRlc3QiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.9jb_sw_8oDHP6h-1HT-tEIORpGIMuCoQ1G1zgk3ud4U' ]</msg>
-<msg timestamp="20210617 22:18:40.140" level="TRACE">Return: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjM5NDMxMjAsIm5iZiI6MTYyMzk0MzEyMCwianRpIjoiNjMzODY2MjctN2Y2NS00ZmYxLWE4MzItYTJhMTgxMjc1MGQ2IiwiZXhwIjoxNjIzOTQ0MDIwLCJpZGVudGl0eSI6InRlc3QiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.9jb_sw_8oDHP6h-1HT-tEIORpGIMuCoQ1G1zgk3ud4U'</msg>
-<msg timestamp="20210617 22:18:40.140" level="INFO">${access_token} = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjM5NDMxMjAsIm5iZiI6MTYyMzk0MzEyMCwianRpIjoiNjMzODY2MjctN2Y2NS00ZmYxLWE4MzItYTJhMTgxMjc1MGQ2IiwiZXhwIjoxNjIzOTQ0MDIwLCJpZGVudGl0eSI6InRlc3QiLCJmcmVzaCI...</msg>
-<status status="PASS" starttime="20210617 22:18:40.139" endtime="20210617 22:18:40.140"></status>
+<status status="PASS" starttime="20210813 11:13:28.505" endtime="20210813 11:13:40.054"/>
 </kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<arguments>
-<arg>${access_token}</arg>
-<arg>${access_token}</arg>
-</arguments>
-<msg timestamp="20210617 22:18:40.140" level="TRACE">Arguments: [ '${access_token}' | '${access_token}' ]</msg>
-<msg timestamp="20210617 22:18:40.140" level="INFO">${access_token} = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjM5NDMxMjAsIm5iZiI6MTYyMzk0MzEyMCwianRpIjoiNjMzODY2MjctN2Y2NS00ZmYxLWE4MzItYTJhMTgxMjc1MGQ2IiwiZXhwIjoxNjIzOTQ0MDIwLCJpZGVudGl0eSI6InRlc3QiLCJmcmVzaCI...</msg>
-<msg timestamp="20210617 22:18:40.140" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20210617 22:18:40.140" endtime="20210617 22:18:40.140"></status>
+<kw name="Select 'Table' on Menu List">
+<msg timestamp="20210813 11:13:40.057" level="FAIL">No keyword with name 'Select 'Table' on Menu List' found.</msg>
+<status status="FAIL" starttime="20210813 11:13:40.057" endtime="20210813 11:13:40.057"/>
 </kw>
-<msg timestamp="20210617 22:18:40.141" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20210617 22:18:39.138" endtime="20210617 22:18:40.141"></status>
+<kw name="Select 'Table Sort and Search' on Table List">
+<status status="NOT RUN" starttime="20210813 11:13:40.058" endtime="20210813 11:13:40.058"/>
 </kw>
-<kw name="Send request to order pizza" library="common_keywords">
-<arguments>
-<arg>${order_success}</arg>
-<arg>${wrong_token_format}</arg>
-<arg>422</arg>
-</arguments>
-<msg timestamp="20210617 22:18:40.142" level="TRACE">Arguments: [ ${body}={'Crust': 'NORMAL', 'Flavor': 'BEEF-NORMAL', 'Size': 'M', 'Table_No': 1} | ${access_token}='1234' | ${http}='422' ]</msg>
-<kw name="Create Dictionary" library="BuiltIn">
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<arguments>
-<arg>Content-Type=application/json</arg>
-<arg>Authorization=Bearer ${access_token}</arg>
-</arguments>
-<assign>
-<var>${headers}</var>
-</assign>
-<msg timestamp="20210617 22:18:40.142" level="TRACE">Arguments: [ 'Content-Type=application/json' | 'Authorization=Bearer ${access_token}' ]</msg>
-<msg timestamp="20210617 22:18:40.142" level="TRACE">Return: {'Authorization': 'Bearer 1234', 'Content-Type': 'application/json'}</msg>
-<msg timestamp="20210617 22:18:40.142" level="INFO">${headers} = {'Content-Type': 'application/json', 'Authorization': 'Bearer 1234'}</msg>
-<status status="PASS" starttime="20210617 22:18:40.142" endtime="20210617 22:18:40.142"></status>
+<kw name="Verify 'Age' column is sorted in descending order">
+<status status="NOT RUN" starttime="20210813 11:13:40.058" endtime="20210813 11:13:40.058"/>
 </kw>
-<kw name="Create Session" library="RequestsLibrary">
-<doc>Create Session: create a HTTP session to a server</doc>
-<arguments>
-<arg>session</arg>
-<arg>${orderPizza['url']}</arg>
-<arg>disable_warnings=1</arg>
-</arguments>
-<msg timestamp="20210617 22:18:40.143" level="TRACE">Arguments: [ 'session' | 'https://order-pizza-api.herokuapp.com/api' | disable_warnings=1 ]</msg>
-<msg timestamp="20210617 22:18:40.143" level="INFO">Creating Session using : alias=session, url=https://order-pizza-api.herokuapp.com/api, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<msg timestamp="20210617 22:18:40.143" level="DEBUG">Creating session: session</msg>
-<msg timestamp="20210617 22:18:40.143" level="DEBUG">Argument types are:
-&lt;class 'bool'&gt;</msg>
-<msg timestamp="20210617 22:18:40.143" level="TRACE">Return: &lt;requests.sessions.Session object at 0x10e79b860&gt;</msg>
-<status status="PASS" starttime="20210617 22:18:40.143" endtime="20210617 22:18:40.143"></status>
+<kw name="Click 'Age' Colunm">
+<status status="NOT RUN" starttime="20210813 11:13:40.058" endtime="20210813 11:13:40.058"/>
 </kw>
-<kw name="Post Request" library="RequestsLibrary">
-<doc>Send a POST request on the session object found using the
-given `alias`</doc>
-<arguments>
-<arg>session</arg>
-<arg>/orders</arg>
-<arg>headers=${headers}</arg>
-<arg>data=${body}</arg>
-</arguments>
-<assign>
-<var>${response}</var>
-</assign>
-<msg timestamp="20210617 22:18:40.144" level="TRACE">Arguments: [ 'session' | '/orders' | headers={'Authorization': 'Bearer 1234', 'Content-Type': 'application/json'} | data={'Crust': 'NORMAL', 'Flavor': 'BEEF-NORMAL', 'Size': 'M', 'Table_No': 1} ]</msg>
-<msg timestamp="20210617 22:18:41.249" level="DEBUG">post response: {"msg":"Not enough segments"}
-</msg>
-<msg timestamp="20210617 22:18:41.250" level="INFO">Post Request using : alias=session, uri=/orders, data={"Crust": "NORMAL", "Flavor": "BEEF-NORMAL", "Size": "M", "Table_No": 1}, headers={'Content-Type': 'application/json', 'Authorization': 'Bearer 1234'}, files=None, allow_redirects=True </msg>
-<msg timestamp="20210617 22:18:41.250" level="TRACE">Return: &lt;Response [422]&gt;</msg>
-<msg timestamp="20210617 22:18:41.251" level="INFO">${response} = &lt;Response [422]&gt;</msg>
-<status status="PASS" starttime="20210617 22:18:40.143" endtime="20210617 22:18:41.251"></status>
+<kw name="Verify 'Age column is sorted in ascending order">
+<status status="NOT RUN" starttime="20210813 11:13:40.058" endtime="20210813 11:13:40.058"/>
 </kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<arguments>
-<arg>${response}</arg>
-<arg>${response}</arg>
-</arguments>
-<msg timestamp="20210617 22:18:41.252" level="TRACE">Arguments: [ '${response}' | '${response}' ]</msg>
-<msg timestamp="20210617 22:18:41.253" level="INFO">${response} = &lt;Response [422]&gt;</msg>
-<msg timestamp="20210617 22:18:41.253" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20210617 22:18:41.252" endtime="20210617 22:18:41.253"></status>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20210813 11:13:40.058" endtime="20210813 11:13:40.162"/>
 </kw>
-<kw name="Should Be Equal As Integers" library="BuiltIn">
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<arguments>
-<arg>${http}</arg>
-<arg>${response.status_code}</arg>
-<arg>Status code is not correct. Expect ${http} but ${response.status_code}</arg>
-</arguments>
-<msg timestamp="20210617 22:18:41.254" level="TRACE">Arguments: [ '422' | 422 | 'Status code is not correct. Expect 422 but 422' ]</msg>
-<msg timestamp="20210617 22:18:41.254" level="INFO">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;class 'int'&gt;</msg>
-<msg timestamp="20210617 22:18:41.254" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20210617 22:18:41.253" endtime="20210617 22:18:41.255"></status>
-</kw>
-<msg timestamp="20210617 22:18:41.255" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20210617 22:18:40.141" endtime="20210617 22:18:41.255"></status>
-</kw>
-<kw name="To Json" library="RequestsLibrary">
-<doc>Convert a string to a JSON object</doc>
-<arguments>
-<arg>${response.text}</arg>
-</arguments>
-<assign>
-<var>${Order_response}</var>
-</assign>
-<msg timestamp="20210617 22:18:41.257" level="TRACE">Arguments: [ '{"msg":"Not enough segments"}\n' ]</msg>
-<msg timestamp="20210617 22:18:41.257" level="INFO">To JSON using : content={"msg":"Not enough segments"}
- </msg>
-<msg timestamp="20210617 22:18:41.257" level="INFO">To JSON using : pretty_print=False </msg>
-<msg timestamp="20210617 22:18:41.257" level="TRACE">Return: {'msg': 'Not enough segments'}</msg>
-<msg timestamp="20210617 22:18:41.257" level="INFO">${Order_response} = {'msg': 'Not enough segments'}</msg>
-<status status="PASS" starttime="20210617 22:18:41.256" endtime="20210617 22:18:41.257"></status>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<arguments>
-<arg>${Order_response['msg']}</arg>
-<arg>${expected_WrongTokenFormat['msg']}</arg>
-</arguments>
-<msg timestamp="20210617 22:18:41.258" level="TRACE">Arguments: [ 'Not enough segments' | 'Not enough segments' ]</msg>
-<msg timestamp="20210617 22:18:41.259" level="DEBUG">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<msg timestamp="20210617 22:18:41.259" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20210617 22:18:41.258" endtime="20210617 22:18:41.259"></status>
-</kw>
-<tags>
-<tag>token_expire</tag>
-<tag>TT</tag>
-</tags>
-<status status="PASS" starttime="20210617 22:18:39.137" endtime="20210617 22:18:41.259" critical="yes"></status>
+<tag>success</tag>
+<status status="FAIL" starttime="20210813 11:13:28.505" endtime="20210813 11:13:40.162">No keyword with name 'Select 'Table' on Menu List' found.</status>
 </test>
-<status status="PASS" starttime="20210617 22:18:38.941" endtime="20210617 22:18:41.260"></status>
+<status status="FAIL" starttime="20210813 11:13:28.334" endtime="20210813 11:13:40.163"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0">Critical Tests</stat>
-<stat pass="1" fail="0">All Tests</stat>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0">token_expire</stat>
-<stat pass="1" fail="0">TT</stat>
+<stat pass="0" fail="1" skip="0">success</stat>
 </tag>
 <suite>
-<stat pass="1" fail="0" id="s1" name="Testcase">Testcase</stat>
+<stat pass="0" fail="1" skip="0" id="s1" name="Exam01">Exam01</stat>
 </suite>
 </statistics>
 <errors>
