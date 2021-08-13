@@ -72,15 +72,7 @@ jobs:
       - name: publish test
         uses: EnricoMi/publish-unit-test-result-action@v1
         with:
-          files: reports/*.xml   
-          
-      - name: notify-tests
-        uses: ./
-        env:
-          EXIT_CODE_FROM_REPORT: "True"
-          SLACK_CHANNEL: '#testing'
-          SLACK_TOKEN: ${{secrets.SLACK_WEBHOOK_URL}}
-          XUNIT_PATH: ./*.xml    
+          files: reports/*.xml    
           
 #   report_gen:
 #     runs-on: ubuntu-latest
