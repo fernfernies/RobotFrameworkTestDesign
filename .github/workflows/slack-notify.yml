@@ -82,7 +82,7 @@ jobs:
       with:
         artifact: reports           # artifact name
         name: reports                 # Name of the check run which will be created
-        path: '*.xml'                     # Path to test results (inside artifact .zip)
+        path: 'reports/*.xml'                     # Path to test results (inside artifact .zip)
         reporter: jest-junit              # Format of test results       
 #         env:
 #             GH_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
