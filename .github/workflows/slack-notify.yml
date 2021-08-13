@@ -94,13 +94,6 @@ jobs:
           path: reports/report.html
           channel: '#testing'  
           
-      - name: xUnit Slack Reporter
-        uses: ivanklee86/xunit-slack-reporter@v1.0.1
-        env:
-          EXIT_CODE_FROM_REPORT: "True"
-          SLACK_CHANNEL: A029U68JSQG
-          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
-          XUNIT_PATH: ./output.xml
 
 #   report_gen:
 #     runs-on: ubuntu-latest
