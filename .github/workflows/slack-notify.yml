@@ -65,7 +65,7 @@ jobs:
 #             echo "::set-env name=REPOSITORY_OWNER::$OWNER"
 #             echo "::set-env name=REPOSITORY_NAME::$REPO"
       - name: Robot Reporter
-        uses: joonvena/robotframework-reporter-action@v1.0
+        uses: joonvena/robotframework-reporter-action@v0.1
         with:
           gh_access_token: ${{ secrets.GITHUB_TOKEN }}
         
