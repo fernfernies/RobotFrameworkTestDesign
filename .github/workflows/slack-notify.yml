@@ -2,6 +2,13 @@ name: Robotframework Job
 on:
   push:
     branches: [main, master, staging ]
+  
+  workflow_dispatch:
+    inputs:
+      message: 
+        description: 'post message as text file to slack'
+        required: true
+        default: 'Hello World!'
 jobs:
   test:
         runs-on: ubuntu-latest
@@ -19,11 +26,18 @@ jobs:
           with:
             name: reports
             path: ${{ github.workspace }}
-  job-2:
+  post:
     runs-on: ubuntu-latest
     steps:
-      - name: Say World
-        run: echo "World"
+      - run: 'echo ${{ github.event.inputs.message }} > message.txt'
+      - uses: MeilCli/slack-upload-file@v1
+        with:
+          slack_token: ${{ secrets.SLACK_TOKEN }}
+          channels: '#testing'
+          file_path: 'message.txt'
+          file_name: 'message.txt'
+          file_type: 'text'
+          initial_comment: 'post by slack-upload-file'
   slack-workflow-status:
     if: always()
     name: Post Workflow Status To Slack
