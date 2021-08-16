@@ -31,7 +31,18 @@ jobs:
     steps:
       - name: check path
         run: ls
-#       - run: 'echo ${{ github.event.inputs.message }} > message.html'
+
+      - run: 'echo ${{ github.event.inputs.message }} > message.html'
+      - uses: MeilCli/slack-upload-file@v1
+        id: message
+        with:
+          slack_token: ${{ secrets.SLACK_TOKEN }}
+          channels: ${{ secrets.SLACK_CHANNELS }}
+          file_path: 'message.html'
+          file_name: 'message.html'
+          file_type: 'html'
+          initial_comment: 'post by slack-upload-file'
+      - run: 'echo ${{ fromJson(steps.message.outputs.response).file.permalink }}'
   slack-workflow-status:
     if: always()
     name: Post Workflow Status To Slack
