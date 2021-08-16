@@ -34,7 +34,7 @@ jobs:
         with:
           slack_token: ${{ secrets.SLACK_TOKEN }}
           channels: '#testing'
-          file_path: 'reports/report.html'
+          file_path: '${{ github.workspace }}/report.html'
           file_name: 'report.html'
           file_type: 'html'
           initial_comment: 'post by slack-upload-file'
