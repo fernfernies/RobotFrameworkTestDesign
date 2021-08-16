@@ -29,6 +29,8 @@ jobs:
   post:
     runs-on: ubuntu-latest
     steps:
+      - name: check path
+        run: ls
 #       - run: 'echo ${{ github.event.inputs.message }} > message.html'
       - uses: MeilCli/slack-upload-file@v1
         with:
