@@ -29,6 +29,7 @@ jobs:
   post:
     runs-on: ubuntu-latest
     steps:
+    #!/bin/bash
       - name: check path
         run: ls
       - name: check path
