@@ -98,5 +98,5 @@ jobs:
           channel: '#testing'  
       
       - name: test listener
-        run: robot --listener fernfernies/RobotFrameworkTestDesign/RobotListener.py;${{secrets.SLACK_WEBHOOK_URL}};cullzie fernfernies/RobotFrameworkTestDesign/
-
+        run: curl --data "The full run finished against \`$current_version\`, with $number_of_failed failed cases; full results at http://the_internal_reporting_server/report.html"  \
+            $'${{secrets.SLACK_WEBHOOK_URL}}?token=${{ secrets.SLACK_TOKEN }}&channel=%23testing'
