@@ -32,14 +32,6 @@ jobs:
       - name: check path
         run: ls
 #       - run: 'echo ${{ github.event.inputs.message }} > message.html'
-      - uses: MeilCli/slack-upload-file@v1
-        with:
-          slack_token: ${{ secrets.SLACK_TOKEN }}
-          channels: '#testing'
-          file_path: '${{ github.workspace }}/report.html'
-          file_name: 'report.html'
-          file_type: 'html'
-          initial_comment: 'post by slack-upload-file'
   slack-workflow-status:
     if: always()
     name: Post Workflow Status To Slack
@@ -84,6 +76,15 @@ jobs:
 #           files: reports/*.xml    
       - name: check path
         run: ls
+        
+      - uses: MeilCli/slack-upload-file@v1
+        with:
+          slack_token: ${{ secrets.SLACK_TOKEN }}
+          channels: '#testing'
+          file_path: 'reports/report.html'
+          file_name: 'report.html'
+          file_type: 'html'
+          initial_comment: 'post by slack-upload-file'    
          
       - name: Slack File Upload
         uses: adrey/slack-file-upload-action@1.0.5
