@@ -34,7 +34,7 @@ jobs:
       - name: check path
         run: pip install robotframework
       - name: execute test
-        run: robot --listener fernfernies/RobotFrameworkTestDesign/RobotListener.py exam01.robot
+        run: robot --listener RobotListener.py exam01.robot
           
   slack-workflow-status:
     if: always()
