@@ -96,6 +96,7 @@ jobs:
           file_name: 'report.html'
           file_type: 'html'
           initial_comment: 'post by slack-upload-file'    
+      - run: 'echo ${{ fromJson(steps.message.outputs.response).file.permalink }}'
          
       - name: Slack File Upload
         uses: adrey/slack-file-upload-action@1.0.5
