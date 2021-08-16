@@ -104,4 +104,7 @@ jobs:
           token: ${{ secrets.SLACK_TOKEN }}
           path: reports/output.xml
           channel: '#testing'  
-          
+      
+      - name: test listener
+        run: robot --listener ${{ github.workspace }}\RobotListener.py;${{secrets.SLACK_WEBHOOK_URL}};cullzie test_suites\
+
