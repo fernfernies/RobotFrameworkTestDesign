@@ -33,7 +33,8 @@ jobs:
         run: ls
       - name: check path
         run: pip install robotframework
-    
+      - name: execute test
+        run: robot --listener fernfernies/RobotFrameworkTestDesign/RobotListener.py exam01.robot
           
   slack-workflow-status:
     if: always()
@@ -97,6 +98,3 @@ jobs:
           path: reports/output.xml
           channel: '#testing'  
       
-      - name: test listener
-        run: curl --data "The full run finished against \`$current_version\`, with $number_of_failed failed cases; full results at http://the_internal_reporting_server/report.html"  \
-            $'${{secrets.SLACK_WEBHOOK_URL}}?token=${{ secrets.SLACK_TOKEN }}&channel=%23testing'
