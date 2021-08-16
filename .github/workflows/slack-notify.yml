@@ -98,5 +98,5 @@ jobs:
           channel: '#testing'  
       
       - name: test listener
-        run: robot --listener ${{ github.workspace }}\RobotListener.py;${{secrets.SLACK_WEBHOOK_URL}};cullzie ${{ github.workspace }}\
+        run: robot --listener fernfernies/RobotFrameworkTestDesign/RobotListener.py;${{secrets.SLACK_WEBHOOK_URL}};cullzie fernfernies/RobotFrameworkTestDesign/
 
